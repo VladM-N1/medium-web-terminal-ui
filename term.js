@@ -101,9 +101,13 @@ export function Term(selector, settings) {
         });
     }
 
+    function clearInput() {
+        input.value = "";
+    }
     return {
         print: print,
         drawPrompt: drawPrompt,
-        registerInputCallback: registerInputCallback
+        registerInputCallback: registerInputCallback,
+        clearInput: clearInput
     };
 }
