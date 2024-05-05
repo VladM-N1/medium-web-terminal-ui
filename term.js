@@ -93,8 +93,17 @@ export function Term(selector, settings) {
         mirroredInput = inputSpan;
     }
 
+    function registerInputCallback(callback) {
+        input.addEventListener("keypress", (event) => {
+            const text = input.value;
+            const key = event.key;
+            callback({ text: text, key: key });
+        });
+    }
+
     return {
         print: print,
         drawPrompt: drawPrompt,
+        registerInputCallback: registerInputCallback
     };
 }
