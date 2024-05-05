@@ -3,7 +3,8 @@ export function Term(selector, settings) {
         outputClass: "output",
         prompt: "name@medium $ ",
         promptClass: "prompt",
-        promptInputClass: "active-input"
+        promptInputClass: "active-input",
+        promptInputId: "active-input-id"
     };
 
     if (settings) {
@@ -18,6 +19,9 @@ export function Term(selector, settings) {
         }
         if (settings.outputClass) {
             termSettings.outputClass = settings.outputClass;
+        }
+        if (settings.promptInputId) {
+            termSettings.promptInputId = settings.promptInputId;
         }
     }
 
@@ -86,6 +90,11 @@ export function Term(selector, settings) {
     }
 
     function drawPrompt() {
+        const lastInput = document.getElementById(termSettings.promptInputId);
+
+        if (lastInput) {
+            lastInput.id = null;
+        }
         const prompt = createPromptElement();
         const inputSpan = createPropmtInputSpan();
         prompt.appendChild(inputSpan);

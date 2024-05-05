@@ -29,7 +29,7 @@ html, body {
   }
 }
 
-.custom-input::after {
+#active-input-id::after {
   content: "";
   width: 5px;
   height: 10pt;
