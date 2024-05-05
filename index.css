@@ -14,3 +14,11 @@ html, body {
 .success {
   color: #008000
 }
+
+.custom-prompt {
+  color: #7CFC00;
+}
+
+.custom-input {
+  color: #00008B;
+}

@@ -2,12 +2,20 @@ export function Term(selector, settings) {
     const termSettings = {
         outputClass: "output",
         prompt: "name@medium $ ",
+        promptClass: "prompt",
+        promptInputClass: "active-input"
     };
+
     if (settings) {
         if (settings.prompt) {
             termSettings.prompt = settings.prompt;
         }
-
+        if (settings.promptClass) {
+            termSettings.promptClass = settings.promptClass;
+        }
+        if (settings.promptInputClass) {
+            termSettings.promptInputClass = settings.promptInputClass;
+        }
         if (settings.outputClass) {
             termSettings.outputClass = settings.outputClass;
         }
@@ -64,6 +72,7 @@ export function Term(selector, settings) {
     function createPromptElement() {
         const prompt = document.createElement("pre");
         prompt.innerText = termSettings.prompt;
+        prompt.classList.add(termSettings.promptClass);
 
         return prompt;
     }
@@ -71,6 +80,7 @@ export function Term(selector, settings) {
     function createPropmtInputSpan() {
         const span = document.createElement("span");
         span.id = termSettings.promptInputId;
+        span.classList.add(termSettings.promptInputClass);
 
         return span;
     }

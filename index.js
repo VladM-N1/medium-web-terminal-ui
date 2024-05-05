@@ -1,6 +1,9 @@
 import {Term} from "./term.js";
 
-const settings = {};
+const settings = {
+    promptClass: "custom-prompt",
+    promptInputClass: "custom-input"
+};
 const selector = document.getElementById("terminal");
 const term = Term(selector, settings);
 term.print("Hello World");
