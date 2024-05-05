@@ -113,8 +113,23 @@ export function Term(selector, settings) {
     function clearInput() {
         input.value = "";
     }
+
+    function printStyled(textObj) {
+        const outputWrapper = document.createElement("pre");
+        if (textObj.classList) {
+            outputWrapper.classList.add(...textObj.classList);
+        }
+        for (const element of textObj.elements) {
+            const node = document.createElement(element.type);
+            node.innerText = element.text;
+            node.classList.add(...element.classList);
+            outputWrapper.appendChild(node);
+        }
+        output.appendChild(outputWrapper);
+    }
     return {
         print: print,
+        printStyled: printStyled,
         drawPrompt: drawPrompt,
         registerInputCallback: registerInputCallback,
         clearInput: clearInput

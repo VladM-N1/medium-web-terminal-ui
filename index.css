@@ -37,3 +37,16 @@ html, body {
   display: inline-block;
   animation: cursor-blink 1.3s steps(2) infinite;
 }
+
+.red {
+  color: #FF0000;
+}
+
+.green {
+  color: #008000;
+}
+
+.folder-list {
+  display: flex;
+  gap: 10px;
+}
