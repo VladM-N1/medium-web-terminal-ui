@@ -1,8 +1,12 @@
 export function Term(selector, settings) {
     const termSettings = {
         outputClass: "output",
-    }
+        prompt: "name@medium $ ",
+    };
     if (settings) {
+        if (settings.prompt) {
+            termSettings.prompt = settings.prompt;
+        }
 
         if (settings.outputClass) {
             termSettings.outputClass = settings.outputClass;
@@ -18,8 +22,7 @@ export function Term(selector, settings) {
         return output;
     }
     let mirrorFromId = undefined;
-    let mirroredInput = document.createElement("span");
-    selector.appendChild(mirroredInput);
+    let mirroredInput = undefined;
 
     function mirrorTextFromInput(elementId) {
         mirrorFromId = elementId;
@@ -45,8 +48,10 @@ export function Term(selector, settings) {
         mirrorTextFromInput(id);
         return input;
     }
-    addHiddenInput();
+
     const output = addOutputContainer();
+    const input = addHiddenInput();
+
     function print(text, cssClass) {
         const printElement =  document.createElement("pre");
         printElement.innerText = text;
@@ -56,7 +61,30 @@ export function Term(selector, settings) {
         output.appendChild(printElement);
     }
 
+    function createPromptElement() {
+        const prompt = document.createElement("pre");
+        prompt.innerText = termSettings.prompt;
+
+        return prompt;
+    }
+
+    function createPropmtInputSpan() {
+        const span = document.createElement("span");
+        span.id = termSettings.promptInputId;
+
+        return span;
+    }
+
+    function drawPrompt() {
+        const prompt = createPromptElement();
+        const inputSpan = createPropmtInputSpan();
+        prompt.appendChild(inputSpan);
+        output.appendChild(prompt);
+        mirroredInput = inputSpan;
+    }
+
     return {
         print: print,
+        drawPrompt: drawPrompt,
     };
 }

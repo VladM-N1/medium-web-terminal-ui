@@ -5,3 +5,4 @@ const selector = document.getElementById("terminal");
 const term = Term(selector, settings);
 term.print("Hello World");
 term.print("Custom Styled Text", "success");
+term.drawPrompt();
