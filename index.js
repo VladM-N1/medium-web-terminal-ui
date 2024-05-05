@@ -33,3 +33,4 @@ function inputCallback(event) {
     }
 }
 term.registerInputCallback(inputCallback);
+term.clear();

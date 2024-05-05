@@ -127,11 +127,15 @@ export function Term(selector, settings) {
         }
         output.appendChild(outputWrapper);
     }
+    function clear() {
+        output.innerText = "";
+    }
     return {
         print: print,
         printStyled: printStyled,
         drawPrompt: drawPrompt,
         registerInputCallback: registerInputCallback,
-        clearInput: clearInput
+        clearInput: clearInput,
+        clear: clear
     };
 }
